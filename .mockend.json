@@ -2,7 +2,7 @@
   "Expense": {
     "id": "string",
     "title": "string",
-    "amount": "double",
+    "amount": "number",
     "date": "date",
     "category": "Category"
   },
