@@ -1,0 +1,13 @@
+{
+  "Expense": {
+    "id": "string",
+    "title": "string",
+    "amount": "double",
+    "date": "date",
+    "category": "Category"
+  },
+  "Category": {
+    "id": "string",
+    "nome": "string"
+  }
+}
