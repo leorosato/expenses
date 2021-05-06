@@ -79,7 +79,7 @@ const ExpenseForm = (props) => {
                 <div className={styles['new-expense__control']}>
                     <label>Title</label>
                     <input
-                        // style={{ borderColor: !isValid ? 'red' : 'black' }}
+                        style={{ borderColor: !isValid ? 'red' : 'black' }}
                         type='text'
                         // value={userInput.title}
                         // onChange={titleChangeHandler}
