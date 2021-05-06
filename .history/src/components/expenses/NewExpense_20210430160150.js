@@ -1,0 +1,14 @@
+import ExpenseForm from "./ExpenseForm"
+
+const saveExpenseDataHandler = (enteredExpenseData) => {
+    console.log(enteredExpenseData);
+}
+
+
+const NewExpense = (props) => {
+    return (<div className="new-expense">
+        <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} ></ExpenseForm>
+    </div>);
+}
+
+export default NewExpense;
