@@ -57,7 +57,10 @@ function App() {
     setExpenses((prev) => {
       return [
         ...prev,
-        data
+        {
+          ...data,
+          date: new Date(data.date),
+       }
       ]
     })
   }
