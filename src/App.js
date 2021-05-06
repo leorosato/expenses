@@ -37,8 +37,11 @@ const INITIAL_EXPENSES_LIST = [
 function App() {
 
   const [expenses, setExpenses] = useState(INITIAL_EXPENSES_LIST);
+  const [isLoading, setIsLoading] = useState(false);
+
 
    const  addExpenseHandler  = async (expense) => {
+    setIsLoading(true);
     const response = await fetch('https://adm2021.azurewebsites.net/api/expenses', {
       method: 'POST',
       body: JSON.stringify({
@@ -53,6 +56,7 @@ function App() {
 
     const data = await response.json();
 
+    setIsLoading(false);
 
     setExpenses((prev) => {
       return [
@@ -66,13 +70,14 @@ function App() {
   }
 
   async function fetchExpensesHandler() {
+    setIsLoading(true);
     const response = await fetch('https://adm2021.azurewebsites.net/api/expenses');
     
    
       const data = await response.json();
 
       console.log(data);
-
+      setIsLoading(false);
 
       const exp = data.map(element => {
         return {
@@ -92,9 +97,17 @@ function App() {
   return (
     <React.Fragment >
       {/* {ReactDOM.createPortal(<NewExpense onAddExpense={addExpenseHandler} />, document.getElementById('new-expense-container')) } */}
+      
+      {isLoading ? (<div className="loader"></div>)
+       :
+      (
+        <React.Fragment >
+      <div class="exp-list">
       <button onClick={fetchExpensesHandler}>Recupera lista</button>
+      </div>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
+      </React.Fragment>)}
     </React.Fragment>
   );
 }
