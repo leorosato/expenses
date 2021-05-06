@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import './App.css';
 import Expenses from './components/expenses/Expenses';
 import NewExpense from './components/expenses/NewExpense';
@@ -91,8 +91,9 @@ function App() {
 
   return (
     <React.Fragment >
-      {ReactDOM.createPortal(<NewExpense onAddExpense={addExpenseHandler} />, document.getElementById('new-expense-container')) }
-      <button onClick={fetchExpensesHandler}>Lista</button>
+      {/* {ReactDOM.createPortal(<NewExpense onAddExpense={addExpenseHandler} />, document.getElementById('new-expense-container')) } */}
+      <button onClick={fetchExpensesHandler}>Recupera lista</button>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </React.Fragment>
   );

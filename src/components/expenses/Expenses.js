@@ -7,20 +7,25 @@ import ExpensesChart from './ExpensesChart';
 import './Expenses.css';
 
 const Expenses = (props) => {
-  const [filteredYear, setFilteredYear] = useState('2020');
+  const [filteredYear, setFilteredYear] = useState('');
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
 
   const filteredExpenses = props.items.filter((expense) => {
-    return expense.date.getFullYear().toString() === filteredYear;
+    return filteredYear==='' || expense.date.getFullYear().toString() === filteredYear ;
   });
+
+  const years = props.items.reduce((total, currentValue, currentIndex, arr) => {
+    return total.add(currentValue.date.getFullYear().toString());
+  }, new Set());
 
   return (
     <div>
       <Card className='expenses'>
         <ExpensesFilter
+          years={Array.from(years)}
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
